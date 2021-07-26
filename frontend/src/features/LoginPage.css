@@ -1,0 +1,48 @@
+body {min-height: 100vh;}
+
+#loginPage {
+  minHeight: 100vh;
+  margin: 0 auto;
+}
+
+#loginCard {
+  border-radius: 5%;
+  width: 30rem;
+  height: 37rem;
+  margin: 0 auto;
+}
+
+#loginTopBox {
+  border-radius: 20px 20px 0 0;
+  height: 100px;
+  width: 30rem;
+  background-color: #5300e8;
+}
+
+#loginDesc {
+  font-size: 17px;
+  text-align: center;
+}
+
+#loginTitle {
+  font-size: 35px;
+  text-align: center;
+}
+
+#loginButton {
+  background-color: #7e3ff2;
+	border-color: #7e3ff2;
+}
+
+#changePassButton {
+  color: #6002ee;
+	border-color: #6002ee
+}
+
+#buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
