@@ -31,7 +31,7 @@ function getUser(username, givenPassword, callback) {
     if (err)
       throw err;
 
-    if (result[0].password === givenPassword) {
+    if (givenPassword === null || result[0].password === givenPassword) {
       callback(result[0]);
     }
     else {

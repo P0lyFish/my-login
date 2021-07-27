@@ -74,12 +74,6 @@ export function LoginPage(props) {
     // data.append('face', file);
 		data.append('faceImg', faceBase64Img);
 
-		// const config = {
-		// 	headers: { 'Content-Type': 'multipart/form-data' }
-		// }
-		// axios.post('/faceid', data, config).then(response => {
-		// 	console.log(response.data)
-		// })
 		axios({
 			method: "post",
 			url: "/faceid",
@@ -89,7 +83,7 @@ export function LoginPage(props) {
 		})
 			.then(function (response) {
 				//handle success
-				console.log(response);
+				console.log(response.data);
 			})
 			.catch(function (response) {
 				//handle error
@@ -100,6 +94,7 @@ export function LoginPage(props) {
   const capture = () => {
     if (webcamRef.current !== null) {
       var capturedImg = webcamRef.current.getScreenshot();
+      console.log(capturedImg.length);
       setState({...state, capturedImg: capturedImg});
       faceapi.detectSingleFace(imageRef.current).then(
         res => {
