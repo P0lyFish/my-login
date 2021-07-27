@@ -5,6 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var multer = require('multer');
 var upload = multer();
+var redis = require("redis");
+var session = require('express-session');
+var redisStore = require('connect-redis')(session);
+var client = redis.createClient();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -32,6 +36,13 @@ app.use(upload.array());
 // app.use(multer({ dest: '/tmp/' }).single('file'));
 app.use(express.static('public'));
 
+app.use(session({
+  secret: 'ssshhhhh',
+  store: new redisStore({ host: 'localhost', port: 6379, client: client,ttl :  260}),
+  saveUninitialized: false,
+  resave: false
+}));
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
@@ -53,4 +64,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// testing
+
 module.exports = app;
+
+

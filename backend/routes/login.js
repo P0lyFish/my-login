@@ -5,7 +5,8 @@ const { insertNewUser, getUser } = require('../services/login')
 
 router.get('/', (req, res, next) => {
   const user = getUser(req.query.username, req.query.password, user => {
-    console.log(user);
+    // console.log(user);
+    req.session.key = user;
     res.send(user);
   })
 });
